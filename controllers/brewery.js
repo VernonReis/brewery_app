@@ -16,6 +16,20 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/:id', async (req, res) => {
+
+	try {
+
+		const findbrewery = await Brewery.findOne( {_id: req.params.id});
+		res.status(200).json(findbrewery);
+	}
+	catch (err) {
+
+		res.status(400).send(err.message);
+	}
+});
+
+
 router.post('/', async (req, res) => {
 
 	try {
