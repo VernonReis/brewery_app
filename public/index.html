@@ -7,10 +7,17 @@
     <title>Brewery</title>
 </head>
 <body ng-controller="MainController as ctrl">
+  <!-- {{ctrl.test}} -->
   <form ng-submit="ctrl.createBrewery()">
     <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
     <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
     <input type="submit" value="Create New Brewery" />
+
+    <table>
+      <tr ng-repeat="brewery in ctrl.brewery">
+        <td>{{ brewery.name}}</td>
+      </tr>
+    </table>
   </form>
 </body>
 </html>

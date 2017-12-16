@@ -1,7 +1,10 @@
+// console.log("WORKING")
+
 const app = angular.module ('BreweryApp', []);
 app.controller('MainController', ['$http', function($http){
-this.brewery = '';
+this.brewery = [];
 this.createForm = {};
+this.test="HELLLOOOOO";
 
 this.createBrewery = () => {
   console.log('Submit button works');
@@ -17,19 +20,17 @@ $http({
   console.error(error)
 }).catch( err => console.log('Catch', err ))
 }
-this.getBreweries = () => {
-    $http({
-        method:'GET',
-        url: '/holidays'
-    }).then( response => {
-        this.brewery =  response.data ;
-        this.oneBrewery = this.brewery[0];
-    }, error => {
-        console.error( error.message );
-    }).catch( err => console.error('Catch: ' , err ));
-};
-//load immediately on page load
-this.getBreweries();
+
+this.getBrewery = () => {
+  $http({ method: 'GET',
+   url: '/brewery'
+ }).then(response=>{
+   this.brewery=response.data
+   this.breweries = this.brewery[0];
+ }).catch(err=> console.log(err));
+}
+this.getBrewery();
+
 this.deleteBrewery= (id) => {
 console.log('Deleting....');
   $http({
@@ -46,4 +47,4 @@ console.log('Deleting....');
   }, error => { console.error(err.message)
   }).catch( err => console.error('Catch', err));
   }
-  
+}]);
