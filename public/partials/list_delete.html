@@ -1,0 +1,11 @@
+<table>
+    <tr ng-repeat="brewery in ctrl.brewery">
+        <td>{{ brewery.name}}</td>
+        <td><div id="trash">
+        <form action="/brewery/<%=brewery._id%>?_method=DELETE" method=POST>
+        <button><span class="glyphicon glyphicon-trash"></span></button>
+        </form>
+      </div></td>
+    </tr>
+</table>
+glyphicon glyphicon-trash

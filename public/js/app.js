@@ -29,7 +29,8 @@ app.controller('MainController', ['$http', function ($http) {
             this.breweries = this.brewery[0];
         }).catch(err => console.log(err));
         this.getBrewery();
-        this.deleteBrewery = (id) => {
+        
+    this.deleteBrewery = (id) => {
             console.log('Deleting....');
             $http({
                 method: 'DELETE',
@@ -62,7 +63,7 @@ app.controller('ReviewController', ['$http', function($http) {
     }
 
     this.allReview = () => {
-        
+
         $http({ url: '/review', method: 'GET' })
             .then(response => {
                 console.log(response.data);
