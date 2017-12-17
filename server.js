@@ -5,6 +5,8 @@ const mongoose   = require('mongoose');
 const morgan     = require('morgan');
 const app        = express();
 
+const breweryController = require('./controllers/brewery.js');
+
 require('pretty-error').start();
 
 // CONFIG
@@ -27,6 +29,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static('public'));
 app.use(morgan('dev'));
+
+app.use('/brewery', breweryController);
 
 
 // LISTEN
