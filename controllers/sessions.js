@@ -5,10 +5,7 @@ const User = require('../models/users.js');
 
 router.post('/login', async (req, res) => {
     try {
-        console.log(req.body.username);
-        console.log(req.body.password);
         const user = await User.findOne({ username: req.body.username });
-        console.log(user);
         if (user.authenticate(req.body.password)) {
             req.session.user = user;
             res.status(200).json({ user, message: 'Log in successful' });
