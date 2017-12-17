@@ -24,6 +24,7 @@ mongoose.Promise = global.Promise;
 // CONTROLLERS
 const breweryController = require('./controllers/brewery.js');
 const usersController = require('./controllers/users');
+const sessionsController = require('./controllers/sessions');
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: false }));
@@ -37,7 +38,8 @@ app.use(session({
     maxAge: 2592000000
 }));
 app.use('/brewery', breweryController);
-app.use('/brewerrs', usersController);
+app.use('/user', usersController);
+app.use('/session', sessionsController);
 
 
 // LISTEN
