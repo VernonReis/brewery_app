@@ -49,6 +49,85 @@ app.controller('MainController', ['$http', function ($http) {
     }
 }]);
 
+app.controller('ReviewController', ['$http', function($http) {
+
+    this.formdata = {};
+    this.editdata = {};
+    this.reviews = [];
+    this.showedits = 1;
+
+    this.edit = (id) => {
+
+        this.showedits = id;
+    }
+
+    this.allReview = () => {
+        
+        $http({ url: '/review', method: 'GET' })
+            .then(response => {
+                console.log(response.data);
+                this.reviews = response.data
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.addReview = () => {
+
+        $http({ url: '/review', method: 'POST', data: this.formdata })
+            .then(response => {
+                console.log(response.data);
+                this.reviews.push(response.data)
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.editReview = (id) => {
+
+        $http({ url: '/review/' + id, method: 'PUT', data: this.editdata })
+            .then(response => {
+                console.log(response.data);
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.deleteReview = (id) => {
+
+    $http({ url: '/review/' + id, method: 'DELETE' })
+        .then(response => {
+
+            console.log(this.reviews);
+
+            const removeByIndex = this.reviews.findIndex(review => review._id === id)
+
+                console.log(removeByIndex);
+                this.reviews.splice(removeByIndex, 1);
+
+        }, err => {
+
+            console.log(err.data.err);
+            this.error = err.statusText;
+
+            console.log(this.reviews);
+
+            const removeByIndex = this.reviews.findIndex(review => review._id === id)
+
+                console.log(removeByIndex);
+                this.reviews.splice(removeByIndex, 1);
+        })
+        .catch(err => console.log(err.message));
+    }
+
+    this.allReview();
+}]);
 
 
 

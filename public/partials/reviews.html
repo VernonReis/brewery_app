@@ -1,0 +1,30 @@
+<div ng-controller='ReviewController as ctrl'>
+
+<h2>Add a review</h2>
+
+<form ng-submit='ctrl.addReview()'>
+	<input type='text' placeholder='rating' ng-model='ctrl.formdata.rating'>
+	<input type='text' placeholder='comment' ng-model='ctrl.formdata.comment'>
+	<input type='hidden' ng-model='ctrl.formdata.user'>
+	<input type='submit'>
+</form>
+
+<div ng-repeat='review in ctrl.reviews'>
+	{{ review.rating }}
+	{{ review.comment }}
+	<button ng-click='ctrl.deleteReview(review._id)'>Delete</h3>
+	<button ng-click='ctrl.edit(review._id)'>Edit</h3>
+</div>
+
+<div ng-if='ctrl.showedits != 1'>
+
+	<h2>Edit Review</h2>
+	
+	<form ng-submit='ctrl.editReview(ctrl.showedits)'>
+		<input type='text' placeholder='rating' ng-model='ctrl.editdata.rating'>
+		<input type='text' placeholder='comment' ng-model='ctrl.editdata.comment'>
+		<input type='hidden' ng-model='ctrl.formdata.user'>
+		<input type='submit'>
+	</form>
+
+</div>
