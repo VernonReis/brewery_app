@@ -25,6 +25,7 @@ mongoose.Promise = global.Promise;
 const breweryController = require('./controllers/brewery.js');
 const usersController = require('./controllers/users.js');
 const sessionsController = require('./controllers/sessions.js');
+const reviewsController = require('./controllers/reviews');
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: false }));
@@ -40,6 +41,7 @@ app.use(session({
 app.use('/brewery', breweryController);
 app.use('/user', usersController);
 app.use('/sessions', sessionsController);
+app.use('/review', reviewsController);
 
 
 // LISTEN
