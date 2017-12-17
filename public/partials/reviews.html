@@ -12,8 +12,8 @@
 <div ng-repeat='review in ctrl.reviews'>
 	{{ review.rating }}
 	{{ review.comment }}
-	<button ng-click='ctrl.deleteReview(review._id)'>Delete</h3>
-	<button ng-click='ctrl.edit(review._id)'>Edit</h3>
+	<button ng-click='ctrl.deleteReview(review._id)'>Delete</button>
+	<button ng-click='ctrl.edit(review._id)'>Edit</button>
 </div>
 
 <div ng-if='ctrl.showedits != 1'>
