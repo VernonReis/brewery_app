@@ -23,8 +23,8 @@ mongoose.Promise = global.Promise;
 
 // CONTROLLERS
 const breweryController = require('./controllers/brewery.js');
-const usersController = require('./controllers/users');
-const sessionsController = require('./controllers/sessions');
+const usersController = require('./controllers/users.js');
+const sessionsController = require('./controllers/sessions.js');
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: false }));
