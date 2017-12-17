@@ -1,0 +1,8 @@
+﻿<div ng-controller='AuthController as auth'>
+
+    <form ng-submit='auth.registerUser()'>
+        <input type="text" placeholder="username" ng-model="auth.newUserForm.username" />
+        <input type="password" placeholder="password" ng-model="auth.newUserForm.password" />
+        <input type="submit" />
+    </form>
+</div>

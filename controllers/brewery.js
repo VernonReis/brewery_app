@@ -16,6 +16,20 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/:id', async (req, res) => {
+
+	try {
+
+		const findbrewery = await Brewery.findOne( {_id: req.params.id});
+		res.status(200).json(findbrewery);
+	}
+	catch (err) {
+
+		res.status(400).send(err.message);
+	}
+});
+
+
 router.post('/', async (req, res) => {
 
 	try {
@@ -53,4 +67,8 @@ router.delete('/:id', async (req, res) => {
 	}
 });
 
+<<<<<<< HEAD
 module.exports = exports.Router();
+=======
+module.exports = router;
+>>>>>>> b18b534231f2c2da00d6bce79ba9babe08bc4b9f
