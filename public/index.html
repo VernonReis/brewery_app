@@ -7,20 +7,11 @@
     <title>Brewery</title>
 </head>
 <body ng-controller="MainController as ctrl">
-<<<<<<< HEAD
   <!-- {{ctrl.test}} -->
   <form ng-submit="ctrl.createBrewery()">
     <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
     <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
     <input type="submit" value="Create New Brewery" />
-=======
-
-
-    <div ng-include="'partials/login.html'"></div>
-    <div ng-include="'partials/register.html'"></div>
-
-
->>>>>>> b18b534231f2c2da00d6bce79ba9babe08bc4b9f
 
     <table>
       <tr ng-repeat="brewery in ctrl.brewery">
