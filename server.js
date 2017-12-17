@@ -39,7 +39,7 @@ app.use(session({
 }));
 app.use('/brewery', breweryController);
 app.use('/user', usersController);
-app.use('/session', sessionsController);
+app.use('/sessions', sessionsController);
 
 
 // LISTEN

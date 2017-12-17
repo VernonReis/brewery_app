@@ -6,6 +6,8 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true }
 });
 
+
+
 userSchema.pre('save', function (next) {
     if (!this.isModified('password')) { return next() }
 
@@ -14,6 +16,7 @@ userSchema.pre('save', function (next) {
     next();
 
 });
+
 
 userSchema.methods.authenticate = function (password) {
     return bcrypt.compareSync(password, this.password);
