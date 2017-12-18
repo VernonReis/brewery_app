@@ -58,6 +58,7 @@ app.controller('ReviewController', ['$http', function($http) {
     this.editdata = {};
     this.reviews = [];
     this.showedits = 1;
+    this.currentuser = {};
 
     this.edit = (id) => {
 
@@ -70,6 +71,19 @@ app.controller('ReviewController', ['$http', function($http) {
             .then(response => {
                 console.log(response.data);
                 this.reviews = response.data
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.user = () => {
+
+        $http({ url: '/user', method: 'GET' })
+            .then(response => {
+                console.log(response.data.username);
+                this.currentuser = response.data.username;
             }, err => {
                 console.log(err.data.err);
                 this.error = err.statusText;
@@ -130,6 +144,7 @@ app.controller('ReviewController', ['$http', function($http) {
     }
 
     this.allReview();
+    this.user();
 }]);
 
 

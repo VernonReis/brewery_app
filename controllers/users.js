@@ -7,10 +7,10 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const user = await User.findOne( { username: req.sessions.user.username } );
+        const user = await User.findOne( { username: req.session.user.username } );
         res.status(200).json(user);
     } catch (err) {
-        
+
         console.log(err);
         res.status(400).json({ err: err.message });
     }
