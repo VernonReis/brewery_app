@@ -5,25 +5,24 @@
     <form ng-submit='ctrl.addReview()'>
         <input type='text' placeholder='rating' ng-model='ctrl.formdata.rating'>
         <input type='text' placeholder='comment' ng-model='ctrl.formdata.comment'>
-        <input type='hidden' ng-model='ctrl.formdata.user'>
+        <input type='hidden' ng-model='ctrl.formdata.userID'>
         <input type='submit'>
     </form>
 
     <div ng-repeat='review in ctrl.reviews'>
         {{ review.rating }}
         {{ review.comment }}
-        <button ng-click='ctrl.deleteReview(review._id)'>Delete</button>
-        <button ng-click='ctrl.edit(review._id)'>Edit</button>
+        <button ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.deleteReview(review._id, review.userID)'>Delete</button>
+        <button ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.edit(review._id, review.userID)'>Edit</button>
     </div>
 
     <div ng-if='ctrl.showedits != 1'>
 
         <h2>Edit Review</h2>
 
-        <form ng-submit='ctrl.editReview(ctrl.showedits)'>
+        <form ng-submit='ctrl.editReview(ctrl.showedits, ctrl.edituserid)'>
             <input type='text' placeholder='rating' ng-model='ctrl.editdata.rating'>
             <input type='text' placeholder='comment' ng-model='ctrl.editdata.comment'>
-            <!-- <input type='hidden' ng-model='ctrl.formdata.user'> -->
             <input type='submit'>
         </form>
 

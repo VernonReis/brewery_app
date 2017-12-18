@@ -18,10 +18,10 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id/:userid', async (req, res) => {
     try {
-        const checkReview = await Review.findByIdAndRemove(req.params.id);
-        if (checkReview.user == req.session.user._id) {
+        
+        if (req.params.userid == req.session.user._id) {
             const review = await Review.findByIdAndRemove(req.params.id);
             res.status(200).json(review);
         }
@@ -33,10 +33,16 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id/:userid', async (req, res) => {
     try {
-        const review = await Review.findByIdAndUpdate(req.params.id, req.body);
-        res.status(200).json(review);
+
+        if (req.params.userid == req.session.user._id) {
+            const review = await Review.findByIdAndUpdate(req.params.id, req.body);
+            res.status(200).json(review);
+        }
+      else {
+            res.status(401).send("Insufficient Authorization");
+        }
     } catch (err) {
         console.log(err);
         res.status(400).json({ err: err.message });

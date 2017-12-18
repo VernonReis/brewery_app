@@ -58,11 +58,13 @@ app.controller('ReviewController', ['$http', function($http) {
     this.editdata = {};
     this.reviews = [];
     this.showedits = 1;
-    this.currentuser = {};
+    this.currentuser = 0;
+    this.edituserid = 0;
 
-    this.edit = (id) => {
+    this.edit = (id, userid) => {
 
         this.showedits = id;
+        this.edituserid = userid;
     }
 
     this.allReview = () => {
@@ -82,8 +84,9 @@ app.controller('ReviewController', ['$http', function($http) {
 
         $http({ url: '/user', method: 'GET' })
             .then(response => {
-                console.log(response.data.username);
-                this.currentuser = response.data.username;
+                console.log(response.data);
+                this.currentuser = response.data._id;
+                this.formdata.userID = this.currentuser;
             }, err => {
                 console.log(err.data.err);
                 this.error = err.statusText;
@@ -104,9 +107,9 @@ app.controller('ReviewController', ['$http', function($http) {
             .catch(err => console.log(err.message));
     }
 
-    this.editReview = (id) => {
+    this.editReview = (id, userid) => {
 
-        $http({ url: '/review/' + id, method: 'PUT', data: this.editdata })
+        $http({ url: '/review/' + id + '/' + userid, method: 'PUT', data: this.editdata })
             .then(response => {
                 console.log(response.data);
             }, err => {
@@ -116,9 +119,9 @@ app.controller('ReviewController', ['$http', function($http) {
             .catch(err => console.log(err.message));
     }
 
-    this.deleteReview = (id) => {
+    this.deleteReview = (id, userid) => {
 
-    $http({ url: '/review/' + id, method: 'DELETE' })
+    $http({ url: '/review/' + id + '/' + userid, method: 'DELETE' })
         .then(response => {
 
             console.log(this.reviews);
