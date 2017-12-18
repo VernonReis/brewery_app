@@ -3,7 +3,18 @@ const router = express.Router();
 
 const User = require('../models/users.js');
 
+router.get('/', async (req, res) => {
 
+    try {
+
+        const user = await User.findOne( { username: req.sessions.user.username } );
+        res.status(200).json(user);
+    } catch (err) {
+        
+        console.log(err);
+        res.status(400).json({ err: err.message });
+    }
+});
 
 
 router.post('/', async (req, res) => {
