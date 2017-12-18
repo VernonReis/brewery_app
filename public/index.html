@@ -10,6 +10,9 @@
 </head>
 <body ng-controller="MainController as ctrl">
 
+
+    <input type="text" placeholder="Search for a Brewery..." ng-model='searchBox'>
+
     <div ng-if='ctrl.showpage' ng-include="'partials/login.html'"></div>
     <div ng-if='ctrl.showpage' ng-include="'partials/register.html'"></div>
     <div ng-if='ctrl.showpage' ng-include="'partials/reviews.html'"></div>
