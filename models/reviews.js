@@ -1,10 +1,11 @@
 ﻿const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userSchema = mongoose.Schema({
+const reviewSchema = mongoose.Schema({
     rating: { type: Number, required: true, min: 1, max: 5 },
     comment: { type: String },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    userID: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    breweryID: { type: mongoose.Schema.Types.ObjectId, ref: 'Brewery' }
 });
 
 
@@ -12,4 +13,4 @@ const userSchema = mongoose.Schema({
 
 
 
-module.exports = mongoose.model('Review', userSchema);
+module.exports = mongoose.model('Review', reviewSchema);
