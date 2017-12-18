@@ -1,6 +1,6 @@
 <table>
     <tr ng-repeat="brewery in ctrl.brewery">
-        <td>{{ brewery.name}}</td>
+        <td ng-click='ctrl.show(brewery._id)'>{{ brewery.name}}</td>
         <td ng-click='ctrl.deleteBrewery(brewery._id)'><span class="glyphicon glyphicon-trash"></span></td>
     </tr>
 </table>

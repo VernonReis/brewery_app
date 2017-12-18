@@ -5,6 +5,10 @@ app.controller('MainController', ['$http', function ($http) {
     this.createForm = {};
     this.test = "HELLLOOOOO";
 
+    this.showpage = true;
+    this.breweryid = 0;
+    this.showbrewery = {};
+
     this.createBrewery = () => {
         console.log('Submit button works');
         $http({
@@ -47,6 +51,25 @@ app.controller('MainController', ['$http', function ($http) {
                 console.error(err.message)
             }).catch(err => console.error('Catch', err));
         
+    }
+
+    this.findBrewery = (id) => {
+
+         $http({
+            method: 'GET',
+            url: '/brewery/' + id
+        }).then(response => {
+            this.showbrewery = response.data;
+            console.log(this.showbrewery);  
+        }).catch(err => console.log(err));
+    }
+
+    this.show = (id) => {
+
+        this.showpage = !this.showpage;
+        this.breweryid = id;
+
+        this.findBrewery(this.breweryid);
     }
 
     this.getBrewery();

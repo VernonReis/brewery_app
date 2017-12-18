@@ -10,16 +10,24 @@
 </head>
 <body ng-controller="MainController as ctrl">
 
-    <div ng-include="'partials/login.html'"></div>
-    <div ng-include="'partials/register.html'"></div>
-    <div ng-include="'partials/reviews.html'"></div>
+    <div ng-if='ctrl.showpage' ng-include="'partials/login.html'"></div>
+    <div ng-if='ctrl.showpage' ng-include="'partials/register.html'"></div>
+    <div ng-if='ctrl.showpage' ng-include="'partials/reviews.html'"></div>
 
-    <form ng-submit="ctrl.createBrewery()">
+    <form ng-if='ctrl.showpage' ng-submit="ctrl.createBrewery()">
         <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
         <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
         <input type="submit" value="Create New Brewery" />
 
         <div ng-include=" 'partials/list_delete.html'"></div>
     </form>
+
+    <div ng-if='ctrl.showpage == false'>
+        <div ng-click='ctrl.show()'>Back to main page</div>
+        <br>
+        Brewery Name: {{ ctrl.showbrewery.name }}
+        <br>
+        Brewery Location: {{ ctrl.showbrewery.location }}
+    </div>
 </body>
 </html>
