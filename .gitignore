@@ -49,3 +49,4 @@ launch.json
 packages
 *.sln
 scripts
+/public/ApiKey.js

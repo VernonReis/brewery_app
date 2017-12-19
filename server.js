@@ -26,6 +26,8 @@ const breweryController = require('./controllers/brewery.js');
 const usersController = require('./controllers/users.js');
 const sessionsController = require('./controllers/sessions.js');
 const reviewsController = require('./controllers/reviews');
+const apiController = require('./controllers/apiFile');
+
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: false }));
@@ -42,6 +44,7 @@ app.use('/brewery', breweryController);
 app.use('/user', usersController);
 app.use('/sessions', sessionsController);
 app.use('/review', reviewsController);
+app.use('/api', apiController);
 
 
 // LISTEN
