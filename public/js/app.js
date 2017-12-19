@@ -62,7 +62,7 @@ app.controller('MainController', ['$http', function ($http) {
         data: this.editOneForm
 
       }). then(response=>{
-        console.log(response.data)
+      window.location.reload();
       }, err => {
           console.log(err.message);
 
