@@ -25,7 +25,7 @@
 
         <div ng-include=" 'partials/list_delete.html'"></div>
     </form>
-    
+
     <div ng-if='ctrl.showpage == false'>
         <div ng-click='ctrl.show()'>Back to main page</div>
         <br>
@@ -33,7 +33,11 @@
         <br>
         Brewery Location: {{ ctrl.showbrewery.location }}
         <h2>Edit Brewery</h2>
-        <div ng-include=" 'partials/edit_brewery.html'"></div>
+        <form ng-submit='ctrl.editOneBrewery(showbrewery._id)'>
+            <input type="text" placeholder="name" ng-model="ctrl.editOneForm.name" />
+            <input type="text" placeholder="location" ng-model="ctrl.editOneForm.location" />
+            <input type="submit" />
+        </form>
     </div>
 </body>
 </html>
