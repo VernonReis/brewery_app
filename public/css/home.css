@@ -8,5 +8,6 @@ body {
 
 input {
   border: 1px solid black!important;
-  width: auto !important;
+  width: 100% !important;
+
 }
