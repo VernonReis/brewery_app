@@ -41,7 +41,7 @@
         <br />
         <h2>Add Review</h2>
         <form ng-submit='ctrl.addReview()'>
-            <input type='text' placeholder='rating' ng-model='ctrl.formdata.rating'>
+            <input type='number' min="1" max="5" placeholder='rating' ng-model='ctrl.formdata.rating' required>
             <input type='text' placeholder='comment' ng-model='ctrl.formdata.comment'>
             <input type='hidden' ng-model='ctrl.formdata.userID'>
             <input type='submit'>
