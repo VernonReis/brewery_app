@@ -1,6 +1,6 @@
 ﻿<div ng-controller='AuthController as auth'>
 
-    <form ng-submit='auth.loginUser()'>
+    <form class="form-group col-md-2" ng-submit='auth.loginUser()'>
         <input type="text" placeholder="username" ng-model="auth.loginForm.username" />
         <input type="password" placeholder="password" ng-model="auth.loginForm.password" />
         <input type="submit" />
