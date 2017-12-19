@@ -2,7 +2,7 @@
 const request = require('request');
 const router = express.Router();
 
-const ApiKey = process.env.MONGODB_URI || require('../public/ApiKey');
+//const ApiKey = process.env.MONGODB_URI || require('../public/ApiKey');
 
 
 router.options('/', async (req, res) => {

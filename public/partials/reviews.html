@@ -3,17 +3,33 @@
     <h2>Add a review</h2>
 
     <form ng-submit='ctrl.addReview()'>
-        <input type='text' placeholder='rating' ng-model='ctrl.formdata.rating'>
-        <input type='text' placeholder='comment' ng-model='ctrl.formdata.comment'>
+      <div class="form-group">
+        <h2>Rating</h2>
+        <select class="form-control" id="exampleFormControlSelect1" ng-model='ctrl.formdata.rating'>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div>
+        <h2>Comment</h2>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Comment" ng-model='ctrl.formdata.comment'>
         <input type='hidden' ng-model='ctrl.formdata.userID'>
-        <input type='submit'>
-    </form>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </form>
 
+    <h2>Reviews</h2>
     <div ng-repeat='review in ctrl.reviews'>
-        {{ review.rating }}
-        {{ review.comment }}
-        <button ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.deleteReview(review._id, review.userID)'>Delete</button>
-        <button ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.edit(review._id, review.userID)'>Edit</button>
+        Rating: {{ review.rating }}
+        <br>
+        Comment: {{ review.comment }}
+        <br>
+        <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.deleteReview(review._id, review.userID)'>Delete</button>
+        <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.edit(review._id, review.userID)'>Edit</button>
+        <br>
     </div>
 
     <div ng-if='ctrl.showedits != 1'>
@@ -23,7 +39,7 @@
         <form ng-submit='ctrl.editReview(ctrl.showedits, ctrl.edituserid)'>
             <input type='text' placeholder='rating' ng-model='ctrl.editdata.rating'>
             <input type='text' placeholder='comment' ng-model='ctrl.editdata.comment'>
-            <input type='submit'>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
     </div>
