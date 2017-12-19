@@ -1,5 +1,12 @@
+
 body {
   background-color: lightgray !important;
-  text-align: center;
-  margin: 0;
+  text-align: center !important;
+
+
+}
+
+input {
+  border: 1px solid black!important;
+  width: auto !important;
 }
