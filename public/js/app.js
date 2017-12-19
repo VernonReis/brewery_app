@@ -53,7 +53,7 @@ app.controller('MainController', ['$http', function ($http) {
 
     }
     this.editOneBrewery = (id)=>{
-      console.log(id)
+      console.log(ctrl.id)
       $http({
         method:'PUT',
         url:'/brewery/' + id,
@@ -63,7 +63,7 @@ app.controller('MainController', ['$http', function ($http) {
         console.log(response.data)
       }, err => {
           console.log(err.message);
-          
+
       }).catch(err => console.log(err.message));
 }
 
