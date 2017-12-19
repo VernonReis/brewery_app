@@ -4,7 +4,7 @@ app.controller('MainController', ['$http', function ($http) {
     this.brewery = [];
     this.createForm = {};
     this.test = "HELLLOOOOO";
-
+    this.editOneForm = {};
     this.showpage = true;
     this.breweryid = 0;
     this.showbrewery = {};
@@ -33,7 +33,7 @@ app.controller('MainController', ['$http', function ($http) {
             this.breweries = this.brewery[0];
         }).catch(err => console.log(err));
     }
-        
+
     this.deleteBrewery = (id) => {
             console.log('Deleting....');
             $http({
@@ -50,8 +50,25 @@ app.controller('MainController', ['$http', function ($http) {
             }, error => {
                 console.error(err.message)
             }).catch(err => console.error('Catch', err));
-        
+
     }
+    this.editOneBrewery = (id)=>{
+      console.log(id)
+      $http({
+        method:'PUT',
+        url:'/brewery/' + id,
+        data: this.editOneForm
+
+      }). then(response=>{
+        console.log(response.data)
+      }, err => {
+          console.log(err.message);
+          
+      }).catch(err => console.log(err.message));
+}
+
+
+
 
     this.findBrewery = (id) => {
 
@@ -60,7 +77,7 @@ app.controller('MainController', ['$http', function ($http) {
             url: '/brewery/' + id
         }).then(response => {
             this.showbrewery = response.data;
-            console.log(this.showbrewery);  
+            console.log(this.showbrewery);
         }).catch(err => console.log(err));
     }
 

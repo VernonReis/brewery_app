@@ -13,6 +13,7 @@
 
     <input type="text" placeholder="Search for a Brewery..." ng-model='searchBox'>
 
+
     <div ng-if='ctrl.showpage' ng-include="'partials/login.html'"></div>
     <div ng-if='ctrl.showpage' ng-include="'partials/register.html'"></div>
     <div ng-if='ctrl.showpage' ng-include="'partials/reviews.html'"></div>
@@ -24,13 +25,15 @@
 
         <div ng-include=" 'partials/list_delete.html'"></div>
     </form>
-
+    
     <div ng-if='ctrl.showpage == false'>
         <div ng-click='ctrl.show()'>Back to main page</div>
         <br>
         Brewery Name: {{ ctrl.showbrewery.name }}
         <br>
         Brewery Location: {{ ctrl.showbrewery.location }}
+        <h2>Edit Brewery</h2>
+        <div ng-include=" 'partials/edit_brewery.html'"></div>
     </div>
 </body>
 </html>
