@@ -53,7 +53,7 @@ app.controller('MainController', ['$http', function ($http) {
 
     }
     this.editOneBrewery = (id)=>{
-      console.log(ctrl.id)
+      console.log(id)
       $http({
         method:'PUT',
         url:'/brewery/' + id,
