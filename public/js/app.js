@@ -81,11 +81,11 @@ app.controller('MainController', ['$http', function ($http) {
         }).catch(err => console.log(err));
     }
 
-    this.show = (id) => {
+    this.show = (brewery) => {
 
         this.showpage = !this.showpage;
-        this.breweryid = id;
-
+        this.breweryid = brewery._id;
+        this.editOneForm = brewery;
         this.findBrewery(this.breweryid);
     }
 
