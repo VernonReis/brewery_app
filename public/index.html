@@ -32,6 +32,21 @@
         Brewery Name: {{ ctrl.showbrewery.name }}
         <br>
         Brewery Location: {{ ctrl.showbrewery.location }}
+        <br />
+        Reviews:
+        <div ng-repeat='review in ctrl.breweryReviews'>
+            {{ review.rating }}
+            {{ review.comment }}
+        </div>
+        <br />
+        <h2>Add Review</h2>
+        <form ng-submit='ctrl.addReview()'>
+            <input type='text' placeholder='rating' ng-model='ctrl.formdata.rating'>
+            <input type='text' placeholder='comment' ng-model='ctrl.formdata.comment'>
+            <input type='hidden' ng-model='ctrl.formdata.userID'>
+            <input type='submit'>
+        </form>
+
         <h2>Edit Brewery</h2>
         <div ng-include=" 'partials/edit_brewery.html'"></div>
     </div>

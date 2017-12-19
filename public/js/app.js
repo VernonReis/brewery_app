@@ -8,6 +8,8 @@ app.controller('MainController', ['$http', function ($http) {
     this.showpage = true;
     this.breweryid = 0;
     this.showbrewery = {};
+    this.reviewFormData = {};
+    this.formdata = {};
 
     this.createBrewery = () => {
         console.log('Submit button works');
@@ -87,6 +89,27 @@ app.controller('MainController', ['$http', function ($http) {
         this.breweryid = brewery._id;
         this.editOneForm = brewery;
         this.findBrewery(this.breweryid);
+        this.formdata.breweryID = this.breweryid;
+        $http({
+            method: 'GET',
+            url: '/review/' + this.breweryid
+        }).then(response => {
+            this.breweryReviews = response.data;
+            console.log(this.showbrewery);
+        }).catch(err => console.log(err));
+    }
+
+    this.addReview = () => {
+
+        $http({ url: '/review', method: 'POST', data: this.formdata })
+            .then(response => {
+                console.log(response.data);
+                this.reviews.push(response.data)
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
     }
 
     this.getBrewery();
@@ -123,6 +146,20 @@ app.controller('ReviewController', ['$http', function($http) {
     this.user = () => {
 
         $http({ url: '/user', method: 'GET' })
+            .then(response => {
+                console.log(response.data);
+                this.currentuser = response.data._id;
+                this.formdata.userID = this.currentuser;
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.breweryReview = (id) => {
+
+        $http({ url: '/review/'+id, method: 'GET' })
             .then(response => {
                 console.log(response.data);
                 this.currentuser = response.data._id;

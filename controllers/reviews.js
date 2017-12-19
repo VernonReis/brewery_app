@@ -33,6 +33,17 @@ router.delete('/:id/:userid', async (req, res) => {
     }
 });
 
+router.get('/:brewId/', async (req, res) => {
+    try {
+
+        const reviews = await Review.find({ breweryID: req.params.brewID });
+
+        res.status(200).json(reviews);
+    } catch (err) {
+        res.status(400).json({ err: err.message });
+    }
+});
+
 router.put('/:id/:userid', async (req, res) => {
     try {
 
