@@ -63,7 +63,7 @@ app.controller('MainController', ['$http', function ($http) {
         console.log(response.data)
       }, err => {
           console.log(err.message);
-          
+
       }).catch(err => console.log(err.message));
 }
 

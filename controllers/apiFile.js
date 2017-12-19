@@ -25,7 +25,7 @@ router.options('/', async (req, res) => {
 
     console.log(locality, region, postalCode);
 
-    test = request("http://api.brewerydb.com/v2/locations/?" + locality + region + postalCode + "& key=" + ApiKey, (error, response, body) => {
+    test = request("http://api.brewerydb.com/v2/locations/?" + locality + region + postalCode + "&isClosed=false&key=" + ApiKey, (error, response, body) => {
         myTest = JSON.parse(body);
 
 
