@@ -11,6 +11,10 @@ app.controller('MainController', ['$http', function ($http) {
     this.reviewFormData = {};
     this.formdata = {};
 
+    this.showedits = 1;
+    this.currentuser = 0;
+    this.edituserid = 0;
+
     this.createBrewery = () => {
         console.log('Submit button works');
         $http({
@@ -90,6 +94,7 @@ app.controller('MainController', ['$http', function ($http) {
         this.editOneForm = brewery;
         this.findBrewery(this.breweryid);
         this.formdata.breweryID = this.breweryid;
+        this.user();
         $http({
             method: 'GET',
             url: '/review/' + this.breweryid
@@ -164,7 +169,6 @@ app.controller('MainController', ['$http', function ($http) {
                 console.log(response.data);
                 this.currentuser = response.data._id;
                 this.formdata.userID = this.currentuser;
-                this.formdata.breweryID = br
             }, err => {
                 console.log(err.data.err);
                 this.error = err.statusText;
@@ -178,9 +182,18 @@ app.controller('MainController', ['$http', function ($http) {
         $http({ url: '/review/' + id + '/' + userid, method: 'PUT', data: this.editdata })
             .then(response => {
                 console.log(response.data);
+                $http({
+                    method: 'GET',
+                    url: '/review/' + this.breweryid
+                }).then(response => {
+                    this.breweryReviews = response.data;
+                    console.log(this.showbrewery);
+                }).catch(err => console.log(err));
+                
             }, err => {
                 console.log(err.data.err);
                 this.error = err.statusText;
+                
             })
             .catch(err => console.log(err.message));
     }
@@ -192,10 +205,13 @@ app.controller('MainController', ['$http', function ($http) {
 
                 console.log(this.reviews);
 
-                const removeByIndex = this.reviews.findIndex(review => review._id === id)
-
-                console.log(removeByIndex);
-                this.reviews.splice(removeByIndex, 1);
+                $http({
+                    method: 'GET',
+                    url: '/review/' + this.breweryid
+                }).then(response => {
+                    this.breweryReviews = response.data;
+                    console.log(this.showbrewery);
+                }).catch(err => console.log(err));
 
             }, err => {
 
