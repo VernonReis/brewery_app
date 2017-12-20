@@ -13,16 +13,16 @@
     <title>Brewery</title>
 </head>
 <body ng-controller="MainController as ctrl">
-
+    <h1>Who Brew?</h1>
     <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
 
     <div ng-if='ctrl.showpage == false'>
         <br>
-        <h1>Brewery Name:
+        <h2>Brewery Name:
         <br>
         {{ ctrl.showbrewery.name }}
         <br>
-        <h1>Brewery Location:
+        <h2>Brewery Location:
         <br>
         {{ ctrl.showbrewery.location }}
         <br />
@@ -31,7 +31,7 @@
         <div ng-include=" 'partials/edit_brewery.html'"></div>
     </div>
 
-    <input ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='searchBox'>
+    
     <input ng-if='ctrl.showpage' class="form-group col-md-2" type="text" placeholder="Search for a Brewery..." ng-model='searchBox'>
 
 

@@ -1,13 +1,31 @@
-
-body {
-  background-color: lightgray !important;
-  text-align: center !important;
-
-
+@font-face {
+  font-family: "beer";
+  src: url(GuinnessExtraStoutNF.ttf);
 }
 
+body {
+  background-image: url("https://m.popkey.co/416b0f/1Z0qX.gif")!important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center !important;
+  color: #f29c38;
+
+}
+div {
+  background-color: gray;
+  padding: 5px!important;
+}
 input {
   border: 1px solid black!important;
   width: 100% !important;
 
+}
+h1 {
+  color: lightgray;
+  padding: 5%;
+  font-family: "beer";
+}
+h1:hover {
+
+  transform: scale(3);
 }
