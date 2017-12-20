@@ -14,8 +14,10 @@
 </head>
 <body ng-controller="MainController as ctrl">
     <div class="beer">
+      <input id="search" ng-if='ctrl.showpage' class="form-group col-md-2" type="text" placeholder="Search for a Brewery..." ng-model='searchBox'>
         <h1>Who Brew?</h1>
     </div>
+    <img src="http://via.placeholder.com/150x450">
     <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
 
     <div ng-if='ctrl.showpage == false'>
@@ -36,9 +38,6 @@
         <h2>Edit Brewery</h2>
         <div ng-include=" 'partials/edit_brewery.html'"></div>
     </div>
-
-
-    <input id="search" ng-if='ctrl.showpage' class="form-group col-md-2" type="text" placeholder="Search for a Brewery..." ng-model='searchBox'>
 
 
     <div ng-if='ctrl.showpage' ng-include="'partials/login.html'"></div>
