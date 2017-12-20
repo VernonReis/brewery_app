@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "beer";
+  src: url(GuinnessExtraStoutNF.ttf);
+}
+
+body {
+   background-color:#A27C5D!important;
+  background-repeat: no-repeat;
+  text-align: center !important;
+  color: black;
+
+}
+div {
+
+  padding: 5px!important;
+}
+input {
+  border: 1px solid black!important;
+  width: 100% !important;
+
+}
+h1 {
+  color: white;
+  padding: 10%;
+  font-family: "beer";
+}
+h1:hover {
+
+  transform: scale(3);
+}
+div.ng-scope{
+  background-color: #80808000;
+}
+input#search {
+  width:25%!important;
+}
+div.beer{
+
+  background-image: url('https://i.imgur.com/wAvWfzS.png')!important;
+}

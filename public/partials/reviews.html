@@ -1,0 +1,35 @@
+<div ng-controller='ReviewController as ctrl'>
+
+    <h2>Add a review</h2>
+
+    <form ng-submit='ctrl.addReview()'>
+        <input type='text' placeholder='Rating 1-5' ng-model='ctrl.formdata.rating'>
+        <input type="text" placeholder="Comment" ng-model='ctrl.formdata.comment'>
+        <input type='hidden' ng-model='ctrl.formdata.userID'>
+        <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+    <h2>Reviews</h2>
+    <div ng-repeat='review in ctrl.reviews'>
+        Rating: {{ review.rating }}
+        <br>
+        Comment: {{ review.comment }}
+        <br>
+        <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.deleteReview(review._id, review.userID)'>Delete</button>
+        <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.edit(review._id, review.userID)'>Edit</button>
+        <br>
+    </div>
+
+    <div ng-if='ctrl.showedits != 1'>
+
+        <h2>Edit Review</h2>
+
+        <form ng-submit='ctrl.editReview(ctrl.showedits, ctrl.edituserid)'>
+            <input type='text' placeholder='rating' ng-model='ctrl.editdata.rating'>
+            <input type='text' placeholder='comment' ng-model='ctrl.editdata.comment'>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+</div>
