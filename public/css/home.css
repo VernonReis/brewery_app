@@ -7,11 +7,22 @@
   flex-direction: row;
   width: 100%;
   justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .container2{
   display: flex;
   flex-direction: column;
-  
+
+}
+.column1{
+  padding-right: 100px;
+}
+.row2 {
+  margin: auto;
+  font-size: 2em;
+  font-family:  inherit;
+  padding-top: 10px;
 }
 body {
    background-color:#A27C5D!important;
@@ -20,9 +31,8 @@ body {
   color: black;
 
 }
-div {
-
-  padding: 5px!important;
+.glyphicon{
+  padding-left: 30px;
 }
 input {
   border: 1px solid black!important;

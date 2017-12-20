@@ -20,14 +20,14 @@
 
   <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="container">
-    <div class="column1"ng-if='ctrl.showpage'>
+    <div class="column1" ng-if='ctrl.showpage'>
       <img src="http://via.placeholder.com/150x450">
     </div>
 
     <div class="column2" ng-if='ctrl.showpage'>
       <div class="container2">
         <div class="row1">
-          <form class="form-group col-md-2" ng-if='ctrl.showpage' ng-submit="ctrl.createBrewery()">
+          <form  ng-if='ctrl.showpage' ng-submit="ctrl.createBrewery()">
             <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
             <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
             <input type="submit" value="Create New Brewery" />
