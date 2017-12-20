@@ -62,7 +62,7 @@ app.controller('MainController', ['$http', function ($http) {
         data: this.editOneForm
 
       }). then(response=>{
-        console.log(response.data)
+      window.location.reload();
       }, err => {
           console.log(err.message);
 
@@ -105,11 +105,22 @@ app.controller('MainController', ['$http', function ($http) {
             .then(response => {
                 console.log(response.data);
                 this.reviews.push(response.data)
+
             }, err => {
                 console.log(err.data.err);
                 this.error = err.statusText;
+                
             })
             .catch(err => console.log(err.message));
+
+        $http({
+            method: 'GET',
+            url: '/review/' + this.breweryid
+        }).then(response => {
+            this.breweryReviews = response.data;
+            console.log(this.showbrewery);
+            this.formdata = {};
+        }).catch(err => console.log(err));
     }
 
     this.getBrewery();
