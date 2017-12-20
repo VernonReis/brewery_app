@@ -3,22 +3,10 @@
     <h2>Add a review</h2>
 
     <form ng-submit='ctrl.addReview()'>
-      <div class="form-group">
-        <h2>Rating</h2>
-        <select class="form-control" id="exampleFormControlSelect1" ng-model='ctrl.formdata.rating'>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-      <div>
-        <h2>Comment</h2>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Comment" ng-model='ctrl.formdata.comment'>
+        <input type='text' placeholder='Rating 1-5' ng-model='ctrl.formdata.rating'>
+        <input type="text" placeholder="Comment" ng-model='ctrl.formdata.comment'>
         <input type='hidden' ng-model='ctrl.formdata.userID'>
         <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
   </form>
 
     <h2>Reviews</h2>
