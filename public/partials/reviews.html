@@ -1,4 +1,4 @@
-<div ng-controller='ReviewController as ctrl'>
+
 
     <h2>Add a review</h2>
 
@@ -10,13 +10,13 @@
   </form>
 
     <h2>Reviews</h2>
-    <div ng-repeat='review in ctrl.reviews'>
+    <div ng-repeat='review in ctrl.breweryReviews'>
         Rating: {{ review.rating }}
         <br>
         Comment: {{ review.comment }}
         <br>
         <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.deleteReview(review._id, review.userID)'>Delete</button>
-        <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.edit(review._id, review.userID)'>Edit</button>
+        <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.edit(review)'>Edit</button>
         <br>
     </div>
 
@@ -31,5 +31,3 @@
         </form>
 
     </div>
-
-</div>

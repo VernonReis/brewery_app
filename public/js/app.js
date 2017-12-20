@@ -10,6 +10,11 @@ app.controller('MainController', ['$http', function ($http) {
     this.showbrewery = {};
     this.reviewFormData = {};
     this.formdata = {};
+    this.editdata = {};
+
+    this.showedits = 1;
+    this.currentuser = 0;
+    this.edituserid = 0;
 
     this.createBrewery = () => {
         console.log('Submit button works');
@@ -90,6 +95,7 @@ app.controller('MainController', ['$http', function ($http) {
         this.editOneForm = brewery;
         this.findBrewery(this.breweryid);
         this.formdata.breweryID = this.breweryid;
+        this.user();
         $http({
             method: 'GET',
             url: '/review/' + this.breweryid
@@ -100,7 +106,7 @@ app.controller('MainController', ['$http', function ($http) {
     }
 
     this.addReview = () => {
-
+        this.formdata.breweryID = this.breweryid;
         $http({ url: '/review', method: 'POST', data: this.formdata })
             .then(response => {
                 console.log(response.data);
@@ -122,6 +128,113 @@ app.controller('MainController', ['$http', function ($http) {
             this.formdata = {};
         }).catch(err => console.log(err));
     }
+
+
+    this.edit = (review) => {
+
+        this.showedits = review._id;
+        this.edituserid = review.userID;
+        this.editdata.rating = review.rating;
+        this.editdata.comment = review.comment;
+    }
+
+    this.allReview = () => {
+
+        $http({ url: '/review', method: 'GET' })
+            .then(response => {
+                console.log(response.data);
+                this.reviews = response.data
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.user = () => {
+
+        $http({ url: '/user', method: 'GET' })
+            .then(response => {
+                console.log(response.data);
+                this.currentuser = response.data._id;
+                this.formdata.userID = this.currentuser;
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.breweryReview = (id) => {
+
+        $http({ url: '/review/' + id, method: 'GET' })
+            .then(response => {
+                console.log(response.data);
+                this.currentuser = response.data._id;
+                this.formdata.userID = this.currentuser;
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+
+    this.editReview = (id, userid) => {
+
+        $http({ url: '/review/' + id + '/' + userid, method: 'PUT', data: this.editdata })
+            .then(response => {
+                console.log(response.data);
+                $http({
+                    method: 'GET',
+                    url: '/review/' + this.breweryid
+                }).then(response => {
+                    this.breweryReviews = response.data;
+                    this.showedits = 1;
+                    console.log(this.showbrewery);
+                }).catch(err => console.log(err));
+                
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+                
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.deleteReview = (id, userid) => {
+
+        $http({ url: '/review/' + id + '/' + userid, method: 'DELETE' })
+            .then(response => {
+
+                console.log(this.reviews);
+
+                $http({
+                    method: 'GET',
+                    url: '/review/' + this.breweryid
+                }).then(response => {
+                    this.breweryReviews = response.data;
+                    console.log(this.showbrewery);
+                }).catch(err => console.log(err));
+
+            }, err => {
+
+                console.log(err.data.err);
+                this.error = err.statusText;
+
+                console.log(this.reviews);
+
+                const removeByIndex = this.reviews.findIndex(review => review._id === id)
+
+                console.log(removeByIndex);
+                this.reviews.splice(removeByIndex, 1);
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.allReview();
+    this.user();
+
 
     this.getBrewery();
 }]);

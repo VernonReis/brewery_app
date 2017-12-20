@@ -33,7 +33,7 @@ router.delete('/:id/:userid', async (req, res) => {
     }
 });
 
-router.get('/:brewId/', async (req, res) => {
+router.get('/:brewId', async (req, res) => {
     try {
         const reviews = await Review.find({ breweryID: req.params.brewId });
         res.status(200).json(reviews);
