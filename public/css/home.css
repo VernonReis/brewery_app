@@ -33,6 +33,7 @@ div.ng-scope{
 }
 input#search {
   width:25%!important;
+  float: left;
 }
 div.beer{
 
