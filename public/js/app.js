@@ -10,6 +10,7 @@ app.controller('MainController', ['$http', function ($http) {
     this.showbrewery = {};
     this.reviewFormData = {};
     this.formdata = {};
+    this.editdata = {};
 
     this.showedits = 1;
     this.currentuser = 0;
@@ -129,10 +130,12 @@ app.controller('MainController', ['$http', function ($http) {
     }
 
 
-    this.edit = (id, userid) => {
+    this.edit = (review) => {
 
-        this.showedits = id;
-        this.edituserid = userid;
+        this.showedits = review._id;
+        this.edituserid = review.userID;
+        this.editdata.rating = review.rating;
+        this.editdata.comment = review.comment;
     }
 
     this.allReview = () => {
@@ -187,6 +190,7 @@ app.controller('MainController', ['$http', function ($http) {
                     url: '/review/' + this.breweryid
                 }).then(response => {
                     this.breweryReviews = response.data;
+                    this.showedits = 1;
                     console.log(this.showbrewery);
                 }).catch(err => console.log(err));
                 

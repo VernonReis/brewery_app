@@ -16,7 +16,7 @@
         Comment: {{ review.comment }}
         <br>
         <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.deleteReview(review._id, review.userID)'>Delete</button>
-        <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.edit(review._id, review.userID)'>Edit</button>
+        <button class="btn btn-outline-secondary" ng-if='ctrl.currentuser == review.userID' ng-click='ctrl.edit(review)'>Edit</button>
         <br>
     </div>
 
