@@ -11,6 +11,7 @@ app.controller('MainController', ['$http', function ($http) {
     this.reviewFormData = {};
     this.formdata = {};
     this.editdata = {};
+    this.searchBox = '';
 
     this.showedits = 1;
     this.currentuser = 0;

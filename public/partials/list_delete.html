@@ -1,6 +1,6 @@
 <table>
     <tr ng-repeat="brewery in ctrl.brewery
-    | orderBy:'title' | filter:searchBox">
+    | orderBy:'title' | filter:ctrl.searchBox">
         <td ng-click='ctrl.show(brewery)'>{{ brewery.name}}</td>
         <td ng-click='ctrl.deleteBrewery(brewery._id)'><span class="glyphicon glyphicon-trash"></span></td>
     </tr>

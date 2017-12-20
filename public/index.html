@@ -33,12 +33,12 @@
         </h2>
         <br />
 
-        <h2>Edit Brewery</h2>
-        <div ng-include=" 'partials/edit_brewery.html'"></div>
+        <h2 ng-if='ctrl.currentuser != 0'>Edit Brewery</h2>
+        <div ng-if='ctrl.currentuser != 0' ng-include=" 'partials/edit_brewery.html'"></div>
     </div>
 
 
-    <input id="search" ng-if='ctrl.showpage' class="form-group col-md-2" type="text" placeholder="Search for a Brewery..." ng-model='searchBox'>
+    <input id="search" ng-if='ctrl.showpage' class="form-group col-md-2" type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
 
 
     <div ng-if='ctrl.showpage' ng-include="'partials/login.html'"></div>
