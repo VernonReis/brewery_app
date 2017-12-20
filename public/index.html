@@ -13,20 +13,24 @@
     <title>Brewery</title>
 </head>
 <body ng-controller="MainController as ctrl">
-  <div class="beer">
-    <h1>Who Brew?</h1>
-  </div>
+    <div class="beer">
+        <h1>Who Brew?</h1>
+    </div>
     <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
 
     <div ng-if='ctrl.showpage == false'>
+        <br />
+        <h2>
+            Brewery Name:
+            <br />
+            {{ ctrl.showbrewery.name }}
+        </h2>
         <br>
-        <h2>Brewery Name:
-        <br>
-        {{ ctrl.showbrewery.name }}
-        <br>
-        <h2>Brewery Location:
-        <br>
-        {{ ctrl.showbrewery.location }}
+        <h2>
+            Brewery Location:
+            <br />
+            {{ ctrl.showbrewery.location }}
+        </h2>
         <br />
 
         <h2>Edit Brewery</h2>
@@ -42,7 +46,7 @@
     <div ng-if='ctrl.showpage == false' ng-include="'partials/reviews.html'"></div>
 
     <form class="form-group col-md-2" ng-if='ctrl.showpage' ng-submit="ctrl.createBrewery()">
-        <input  type='text' placeholder="name" ng-model="ctrl.createForm.name" />
+        <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
         <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
         <input type="submit" value="Create New Brewery" />
 

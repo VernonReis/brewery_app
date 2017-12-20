@@ -1,4 +1,4 @@
-<div ng-controller='ReviewController as ctrl'>
+
 
     <h2>Add a review</h2>
 
@@ -10,7 +10,7 @@
   </form>
 
     <h2>Reviews</h2>
-    <div ng-repeat='review in ctrl.reviews'>
+    <div ng-repeat='review in ctrl.breweryReviews'>
         Rating: {{ review.rating }}
         <br>
         Comment: {{ review.comment }}
@@ -31,5 +31,3 @@
         </form>
 
     </div>
-
-</div>

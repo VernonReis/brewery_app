@@ -100,7 +100,7 @@ app.controller('MainController', ['$http', function ($http) {
     }
 
     this.addReview = () => {
-
+        this.formdata.breweryID = this.breweryid;
         $http({ url: '/review', method: 'POST', data: this.formdata })
             .then(response => {
                 console.log(response.data);
@@ -122,6 +122,99 @@ app.controller('MainController', ['$http', function ($http) {
             this.formdata = {};
         }).catch(err => console.log(err));
     }
+
+
+    this.edit = (id, userid) => {
+
+        this.showedits = id;
+        this.edituserid = userid;
+    }
+
+    this.allReview = () => {
+
+        $http({ url: '/review', method: 'GET' })
+            .then(response => {
+                console.log(response.data);
+                this.reviews = response.data
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.user = () => {
+
+        $http({ url: '/user', method: 'GET' })
+            .then(response => {
+                console.log(response.data);
+                this.currentuser = response.data._id;
+                this.formdata.userID = this.currentuser;
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.breweryReview = (id) => {
+
+        $http({ url: '/review/' + id, method: 'GET' })
+            .then(response => {
+                console.log(response.data);
+                this.currentuser = response.data._id;
+                this.formdata.userID = this.currentuser;
+                this.formdata.breweryID = br
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+
+    this.editReview = (id, userid) => {
+
+        $http({ url: '/review/' + id + '/' + userid, method: 'PUT', data: this.editdata })
+            .then(response => {
+                console.log(response.data);
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.deleteReview = (id, userid) => {
+
+        $http({ url: '/review/' + id + '/' + userid, method: 'DELETE' })
+            .then(response => {
+
+                console.log(this.reviews);
+
+                const removeByIndex = this.reviews.findIndex(review => review._id === id)
+
+                console.log(removeByIndex);
+                this.reviews.splice(removeByIndex, 1);
+
+            }, err => {
+
+                console.log(err.data.err);
+                this.error = err.statusText;
+
+                console.log(this.reviews);
+
+                const removeByIndex = this.reviews.findIndex(review => review._id === id)
+
+                console.log(removeByIndex);
+                this.reviews.splice(removeByIndex, 1);
+            })
+            .catch(err => console.log(err.message));
+    }
+
+    this.allReview();
+    this.user();
+
 
     this.getBrewery();
 }]);
