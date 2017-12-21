@@ -24,7 +24,7 @@
 }
 .row2 {
   margin: auto;
-  font-size: 2em;
+  font-size: 25em;
   font-family:  inherit;
   padding-top: 10px;
 }
@@ -34,6 +34,9 @@ body {
   text-align: center !important;
   color: silver;
 
+}
+td {
+  font-size: 2em;
 }
 .glyphicon{
   padding-left: 30px;
