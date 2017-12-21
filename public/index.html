@@ -13,8 +13,11 @@
   <title>Brewery</title>
 </head>
 <body ng-controller="MainController as ctrl">
+  {{ctrl.test}}
   <div class="beer">
     <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
+    <p>Hi, {{ctrl.definitelysomething}} !</p>
+
     <h1>Who Brew?</h1>
   </div>
 
@@ -48,14 +51,6 @@
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 
-    <div ng-if='ctrl.showpage' ng-include="'partials/login.html'"></div>
-    <div ng-if='ctrl.showpage' ng-include="'partials/register.html'"></div>
-    <div ng-if='ctrl.showpage == false' ng-include="'partials/reviews.html'"></div>
-
-    <form class="form-group col-md-2" ng-if='ctrl.showpage' ng-submit="ctrl.createBrewery()">
-        <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
-        <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
-        <input type="submit" value="Create New Brewery" />
 
   <div ng-if='ctrl.showpage' ng-include="'partials/login.html'"></div>
   <div ng-if='ctrl.showpage' ng-include="'partials/register.html'"></div>
@@ -77,5 +72,6 @@
     <br />
 
   </div>
+
 </body>
 </html>

@@ -35,6 +35,10 @@ body {
   color: silver;
 
 }
+p {
+  color: white !important;
+  font-size: 30px;
+}
 td {
   font-size: 2em;
 }

@@ -1,8 +1,8 @@
-﻿<div id="transparent" ng-controller='MainController as auth'>
+﻿<div id="transparent">
 
-    <form class="form-group col-md-2" ng-submit='auth.loginUser()'>
-        <input type="text" placeholder="username" ng-model="auth.loginForm.username" />
-        <input type="password" placeholder="password" ng-model="auth.loginForm.password" />
+    <form class="form-group col-md-2" ng-submit='ctrl.loginUser()'>
+        <input type="text" placeholder="username" ng-model="ctrl.loginForm.username" />
+        <input type="password" placeholder="password" ng-model="ctrl.loginForm.password" />
         <input type="submit" />
     </form>
 </div>

@@ -12,7 +12,7 @@ app.controller('MainController', ['$http', function ($http) {
     this.formdata = {};
     this.editdata = {};
     this.searchBox = '';
-
+    this.currentlogeduser={};
     this.showedits = 1;
     this.currentuser = 0;
     this.edituserid = 0;
@@ -245,6 +245,11 @@ app.controller('MainController', ['$http', function ($http) {
                         console.log('Log in successful!');
                         isLogged=true;
                         this.user = response.data.user;
+                        this.definitelysomething = response.data.user.username;
+                        console.log(this.definitelysomething);
+                        console.log("++++++++++++")
+                        this.test="goodbye";
+                        console.log(this);
                     }, err => {
                         console.log(err.data.err);
                         this.error = err.statusText;
@@ -263,4 +268,9 @@ app.controller('MainController', ['$http', function ($http) {
                     })
                     .catch(err => this.error = 'Something went wrong');
             };
+            this.testthis = () => {
+              console.log(this);
+              console.log(this.test);
+              console.log(this.definitelysomething);
+            }
 }]);
