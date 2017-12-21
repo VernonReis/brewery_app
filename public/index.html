@@ -33,7 +33,7 @@
                 <div ng-if='ctrl.loginStatus == "login"' ng-include="'partials/login.html'"></div>
                 <div ng-if='ctrl.loginStatus == "register"' ng-include="'partials/register.html'"></div>
                 <div ng-if='ctrl.loginStatus == "logged"'>
-                    <h3>Welcome {{ctrl.user.username}}</h3>
+                    <h3>Welcome {{ctrl.myUser.username}}</h3>
                     <button ng-click="ctrl.logoutUser()">Logout</button>
                 </div>
             </div>
