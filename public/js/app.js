@@ -274,6 +274,7 @@ app.controller('MainController', ['$http', function ($http) {
                 this.newUserForm = {};
                 this.loginForm = {};
                 this.checkUserReview();
+                this.user();
             }, err => {
                 console.log(err.data.err);
                 this.error = err.statusText;
