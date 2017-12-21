@@ -17,6 +17,7 @@ app.controller('MainController', ['$http', function ($http) {
     this.currentuser = 0;
     this.edituserid = 0;
     this.loginStatus = "login";
+    this.myUser = {};
 
     this.createBrewery = () => {
         console.log('Submit button works');
@@ -246,7 +247,7 @@ app.controller('MainController', ['$http', function ($http) {
                         console.log('Log in successful!');
                         isLogged = true;
                         this.loginStatus = "logged";
-                        this.user = response.data.user;
+                        this.myUser = response.data.user;
                         this.definitelysomething = response.data.user.username;
                         console.log(this.definitelysomething);
                         console.log("++++++++++++")
@@ -265,7 +266,7 @@ app.controller('MainController', ['$http', function ($http) {
                 $http({ url: '/user', method: 'post', data: this.newUserForm })
                     .then(response => {
                         console.log('Register successful!');
-                        this.user = response.data.user;
+                        this.myUser = response.data.user;
                         this.loginStatus = 'logged';
                         this.newUserForm = {};
                         this.loginForm = {};
