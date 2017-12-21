@@ -41,6 +41,7 @@ p {
 }
 td {
   font-size: 2em;
+  cursor: pointer;
 }
 .glyphicon{
   padding-left: 30px;
