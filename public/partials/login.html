@@ -1,8 +1,7 @@
-﻿<div id="transparent" ng-controller='AuthController as auth'>
-
-    <form class="form-group col-md-2" ng-submit='auth.loginUser()'>
-        <input type="text" placeholder="username" ng-model="auth.loginForm.username" />
-        <input type="password" placeholder="password" ng-model="auth.loginForm.password" />
-        <input type="submit" />
-    </form>
-</div>
+﻿<h3>Login</h3>
+<form class="form-group col-md-2" ng-submit='ctrl.loginUser()'>
+    <input type="text" placeholder="username" ng-model="ctrl.loginForm.username" />
+    <input type="password" placeholder="password" ng-model="ctrl.loginForm.password" />
+    <input type="submit" />
+</form>
+<button ng-click="ctrl.loginStatus = 'register'">Register</button>
