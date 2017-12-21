@@ -1,77 +1,80 @@
 ﻿<DOCTYPE html>
-<html ng-app="BreweryApp">
-<head>
-  <meta charset="utf-8" />
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-  <script type="text/javascript" src="/js/app.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <html ng-app="BreweryApp">
+    <head>
+        <meta charset="utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="/css/showpage.css">
+        <link rel="stylesheet" type="text/css" href="/css/showpage.css">
 
 
-  <link rel="stylesheet" href="/css/home.css">
-  <title>Brewery</title>
-</head>
-<body ng-controller="MainController as ctrl">
-  {{ctrl.test}}
-  <div class="beer">
-    <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
-    <p>Hi, {{ctrl.definitelysomething}} !</p>
+        <link rel="stylesheet" href="/css/home.css">
+        <title>Brewery</title>
+    </head>
+    <body ng-controller="MainController as ctrl">
+        {{ctrl.test}}
+        <div class="beer">
+            <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
+            <p>Hi, {{ctrl.definitelysomething}} !</p>
 
-    <h1>Who Brew?</h1>
-  </div>
+            <h1>Who Brew?</h1>
+        </div>
 
         <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
 
         <h2 ng-if='ctrl.currentuser != 0 && ctrl.showpage == false'>Edit Brewery</h2>
         <div ng-if='ctrl.currentuser != 0 && ctrl.showpage == false' ng-include=" 'partials/edit_brewery.html'"></div>
 
-  <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-  <div class="container">
-    <div class="column1" ng-if='ctrl.showpage'>
-      <img src="http://via.placeholder.com/150x450">
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <div class="container">
+            <div class="column1">
+                <!--<img src="http://via.placeholder.com/150x450">-->
+                <div ng-if='ctrl.loginStatus == "login"' ng-include="'partials/login.html'"></div>
+                <div ng-if='ctrl.loginStatus == "register"' ng-include="'partials/register.html'"></div>
+                <div ng-if='ctrl.loginStatus == "logged"'>
+                    <h3>Welcome {{ctrl.user.username}}</h3>
+                    <button ng-click="ctrl.logoutUser()">Logout</button>
+                </div>
+            </div>
 
-    </div>
-
-    <div class="column2" ng-if='ctrl.showpage'>
-      <div class="container2">
-        <div class="row1">
-          <form  ng-if='ctrl.showpage' ng-submit="ctrl.createBrewery()">
-            <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
-            <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
-            <input class="create"type="submit" value="Create New Brewery" />
-          </form>
+            <div class="column2" ng-if='ctrl.showpage'>
+                <div class="container2">
+                    <div class="row1">
+                        <form ng-if='ctrl.showpage' ng-submit="ctrl.createBrewery()">
+                            <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
+                            <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
+                            <input class="create" type="submit" value="Create New Brewery" />
+                        </form>
+                    </div>
+                    <div class="row2">
+                        <div ng-include=" 'partials/list_delete.html'"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row2">
-          <div ng-include=" 'partials/list_delete.html'"></div>
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+        <div ng-if='ctrl.showpage == false' ng-include="'partials/reviews.html'"></div>
+        <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
+        <div ng-if='ctrl.showpage == false'>
+            <br />
+            <h2>
+                Brewery Name:
+                <br />
+                {{ ctrl.showbrewery.name }}
+            </h2>
+            <br>
+            <h2>
+                Brewery Location:
+                <br />
+                {{ ctrl.showbrewery.location }}
+            </h2>
+            <br />
+
         </div>
-      </div>
-    </div>
-  </div>
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-
-
-  <div ng-if='ctrl.showpage' ng-include="'partials/login.html'"></div>
-  <div ng-if='ctrl.showpage' ng-include="'partials/register.html'"></div>
-  <div ng-if='ctrl.showpage == false' ng-include="'partials/reviews.html'"></div>
-  <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
-  <div ng-if='ctrl.showpage == false'>
-    <br />
-    <h2>
-      Brewery Name:
-      <br />
-      {{ ctrl.showbrewery.name }}
-    </h2>
-    <br>
-    <h2>
-      Brewery Location:
-      <br />
-      {{ ctrl.showbrewery.location }}
-    </h2>
-    <br />
-
-  </div>
-
-</body>
+    </body>
 </html>

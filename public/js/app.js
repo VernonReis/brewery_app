@@ -16,6 +16,7 @@ app.controller('MainController', ['$http', function ($http) {
     this.showedits = 1;
     this.currentuser = 0;
     this.edituserid = 0;
+    this.loginStatus = "login";
 
     this.createBrewery = () => {
         console.log('Submit button works');
@@ -243,13 +244,16 @@ app.controller('MainController', ['$http', function ($http) {
                 $http({ url: '/sessions/login', method: 'post', data: this.loginForm })
                     .then(response => {
                         console.log('Log in successful!');
-                        isLogged=true;
+                        isLogged = true;
+                        this.loginStatus = "logged";
                         this.user = response.data.user;
                         this.definitelysomething = response.data.user.username;
                         console.log(this.definitelysomething);
                         console.log("++++++++++++")
                         this.test="goodbye";
                         console.log(this);
+                        this.newUserForm = {};
+                        this.loginForm = {};
                     }, err => {
                         console.log(err.data.err);
                         this.error = err.statusText;
@@ -262,6 +266,9 @@ app.controller('MainController', ['$http', function ($http) {
                     .then(response => {
                         console.log('Register successful!');
                         this.user = response.data.user;
+                        this.loginStatus = 'logged';
+                        this.newUserForm = {};
+                        this.loginForm = {};
                     }, err => {
                         console.log(err.data.err);
                         this.error = err.statusText;
@@ -272,5 +279,22 @@ app.controller('MainController', ['$http', function ($http) {
               console.log(this);
               console.log(this.test);
               console.log(this.definitelysomething);
+            }
+
+            this.logoutUser = () => {
+                $http({ url: '/sessions/logout', method: 'delete'})
+                    .then(response => {
+                        console.log('Logout successful!');
+                        this.loginStatus = 'login';
+                    }, err => {
+                        console.log(err.data.err);
+                        this.error = err.statusText;
+                    })
+                    .catch(err => this.error = 'Something went wrong');
+            };
+            this.testthis = () => {
+                console.log(this);
+                console.log(this.test);
+                console.log(this.definitelysomething);
             }
 }]);

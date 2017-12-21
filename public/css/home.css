@@ -51,10 +51,10 @@ h1 {
   padding: 10%;
   font-family: "beer";
 }
-h1:hover {
+/*h1:hover {
 
   transform: scale(3);
-}
+}*/
 div.ng-scope{
   background-color: #80808000;
 }
@@ -66,4 +66,8 @@ div.beer{
   background-image: url('https://i.imgur.com/wAvWfzS.png')!important;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+form {
+    width: inherit !important;
 }
