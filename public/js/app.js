@@ -12,12 +12,13 @@ app.controller('MainController', ['$http', function ($http) {
     this.formdata = {};
     this.editdata = {};
     this.searchBox = '';
-    this.currentlogeduser={};
+    this.currentlogeduser = {};
     this.showedits = 1;
     this.currentuser = 0;
     this.edituserid = 0;
     this.loginStatus = "login";
     this.myUser = {};
+    this.hasReview = false;
 
     this.createBrewery = () => {
         console.log('Submit button works');
@@ -45,44 +46,44 @@ app.controller('MainController', ['$http', function ($http) {
     }
 
     this.deleteBrewery = (id) => {
-            console.log('Deleting....');
-            $http({
-                method: 'DELETE',
-                url: '/brewery/' + id
-            }).then(response => {
-                console.table(response.data);
-                const removeByIndex = this.brewery.findIndex(brewery => brewery._id === id)
+        console.log('Deleting....');
+        $http({
+            method: 'DELETE',
+            url: '/brewery/' + id
+        }).then(response => {
+            console.table(response.data);
+            const removeByIndex = this.brewery.findIndex(brewery => brewery._id === id)
 
-                this.brewery.splice(removeByIndex, 1);
+            this.brewery.splice(removeByIndex, 1);
 
 
-                console.log('this is the array index number of the destination i want to delete: ', removeByIndex);
-            }, error => {
-                console.error(err.message)
-            }).catch(err => console.error('Catch', err));
+            console.log('this is the array index number of the destination i want to delete: ', removeByIndex);
+        }, error => {
+            console.error(err.message)
+        }).catch(err => console.error('Catch', err));
 
     }
-    this.editOneBrewery = (id)=>{
-      console.log(id)
-      $http({
-        method:'PUT',
-        url:'/brewery/' + id,
-        data: this.editOneForm
+    this.editOneBrewery = (id) => {
+        console.log(id)
+        $http({
+            method: 'PUT',
+            url: '/brewery/' + id,
+            data: this.editOneForm
 
-      }). then(response=>{
-      window.location.reload();
-      }, err => {
-          console.log(err.message);
+        }).then(response => {
+            window.location.reload();
+        }, err => {
+            console.log(err.message);
 
-      }).catch(err => console.log(err.message));
-}
+        }).catch(err => console.log(err.message));
+    }
 
 
 
 
     this.findBrewery = (id) => {
 
-         $http({
+        $http({
             method: 'GET',
             url: '/brewery/' + id
         }).then(response => {
@@ -105,6 +106,19 @@ app.controller('MainController', ['$http', function ($http) {
         }).then(response => {
             this.breweryReviews = response.data;
             console.log(this.showbrewery);
+            }).catch(err => console.log(err));
+        if (this.loginStatus == 'logged') {
+            this.checkUserReview();
+        }
+
+    }
+
+    this.checkUserReview = () => {
+        $http({
+            method: 'GET',
+            url: '/review/count/' + this.breweryid + '/' + this.myUser._id
+        }).then(response => {
+            this.hasReview = response.data;
         }).catch(err => console.log(err));
     }
 
@@ -129,6 +143,7 @@ app.controller('MainController', ['$http', function ($http) {
             this.breweryReviews = response.data;
             console.log(this.showbrewery);
             this.formdata = {};
+            this.checkUserReview();
         }).catch(err => console.log(err));
     }
 
@@ -195,6 +210,7 @@ app.controller('MainController', ['$http', function ($http) {
                     this.breweryReviews = response.data;
                     this.showedits = 1;
                     console.log(this.showbrewery);
+                    this.checkUserReview();
                 }).catch(err => console.log(err));
 
             }, err => {
@@ -218,6 +234,7 @@ app.controller('MainController', ['$http', function ($http) {
                 }).then(response => {
                     this.breweryReviews = response.data;
                     console.log(this.showbrewery);
+                    this.checkUserReview();
                 }).catch(err => console.log(err));
 
             }, err => {
@@ -239,63 +256,68 @@ app.controller('MainController', ['$http', function ($http) {
     this.user();
 
 
+
     this.getBrewery();
 
-            this.loginUser = () => {
-                $http({ url: '/sessions/login', method: 'post', data: this.loginForm })
-                    .then(response => {
-                        console.log('Log in successful!');
-                        isLogged = true;
-                        this.loginStatus = "logged";
-                        this.myUser = response.data.user;
-                        this.definitelysomething = response.data.user.username;
-                        console.log(this.definitelysomething);
-                        console.log("++++++++++++")
-                        this.test="goodbye";
-                        console.log(this);
-                        this.newUserForm = {};
-                        this.loginForm = {};
-                    }, err => {
-                        console.log(err.data.err);
-                        this.error = err.statusText;
-                    })
-                    .catch(err => this.error = 'Server broke?');
-            };
-
-            this.registerUser = () => {
-                $http({ url: '/user', method: 'post', data: this.newUserForm })
-                    .then(response => {
-                        console.log('Register successful!');
-                        this.myUser = response.data;
-                        this.loginStatus = 'logged';
-                        this.newUserForm = {};
-                        this.loginForm = {};
-                    }, err => {
-                        console.log(err.data.err);
-                        this.error = err.statusText;
-                    })
-                    .catch(err => this.error = 'Something went wrong');
-            };
-            this.testthis = () => {
-              console.log(this);
-              console.log(this.test);
-              console.log(this.definitelysomething);
-            }
-
-            this.logoutUser = () => {
-                $http({ url: '/sessions/logout', method: 'delete'})
-                    .then(response => {
-                        console.log('Logout successful!');
-                        this.loginStatus = 'login';
-                    }, err => {
-                        console.log(err.data.err);
-                        this.error = err.statusText;
-                    })
-                    .catch(err => this.error = 'Something went wrong');
-            };
-            this.testthis = () => {
-                console.log(this);
-                console.log(this.test);
+    this.loginUser = () => {
+        $http({ url: '/sessions/login', method: 'post', data: this.loginForm })
+            .then(response => {
+                console.log('Log in successful!');
+                isLogged = true;
+                this.loginStatus = "logged";
+                this.myUser = response.data.user;
+                this.definitelysomething = response.data.user.username;
                 console.log(this.definitelysomething);
-            }
+                console.log("++++++++++++")
+                this.test = "goodbye";
+                console.log(this);
+                this.newUserForm = {};
+                this.loginForm = {};
+                this.checkUserReview();
+                this.user();
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => this.error = 'Server broke?');
+    };
+
+    this.registerUser = () => {
+        $http({ url: '/user', method: 'post', data: this.newUserForm })
+            .then(response => {
+                console.log('Register successful!');
+                this.myUser = response.data;
+                this.loginStatus = 'logged';
+                this.newUserForm = {};
+                this.loginForm = {};
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => this.error = 'Something went wrong');
+    };
+    this.testthis = () => {
+        console.log(this);
+        console.log(this.test);
+        console.log(this.definitelysomething);
+    }
+
+    this.logoutUser = () => {
+        $http({ url: '/sessions/logout', method: 'delete' })
+            .then(response => {
+                console.log('Logout successful!');
+                this.loginStatus = 'login';
+                this.myUser = {};
+                this.currentuser = 0;
+            }, err => {
+                console.log(err.data.err);
+                this.error = err.statusText;
+            })
+            .catch(err => this.error = 'Something went wrong');
+    };
+    this.testthis = () => {
+        console.log(this);
+        console.log(this.test);
+        console.log(this.definitelysomething);
+    }
 }]);

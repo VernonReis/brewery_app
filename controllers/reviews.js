@@ -64,11 +64,17 @@ router.get('/count/:id/:userid', async (req, res) => {
 
         const review = await Review.find({ breweryID: req.params.id, userID: req.params.userid });
         console.log(review);
-        res.status(200).json(true);
+        if (review.length == 1) {
+            res.status(200).json(true);
+        }
+        else {
+            res.status(200).json(false);
+        }
+        
 
     } catch (err) {
         console.log(err);
-        res.status(400).json({ err: err.message });
+        res.status(400).json(false);
     }
 });
 

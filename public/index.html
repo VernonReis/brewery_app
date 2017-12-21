@@ -40,12 +40,13 @@
 
             <div class="column2" ng-if='ctrl.showpage'>
                 <div class="container2">
-                    <div class="row1">
-                        <form ng-if='ctrl.showpage' ng-submit="ctrl.createBrewery()">
+                    <div class="row1" >
+                        <form ng-if='ctrl.showpage && (ctrl.loginStatus == "logged")' ng-submit="ctrl.createBrewery()">
                             <input type='text' placeholder="name" ng-model="ctrl.createForm.name" />
                             <input type='text' placeholder="location" ng-model="ctrl.createForm.location" />
                             <input class="create" type="submit" value="Create New Brewery" />
                         </form>
+                        <h2 ng-if='ctrl.showpage && (ctrl.loginStatus != "logged")'>Login To Add A New Brewery</h2>
                     </div>
                     <div class="row2">
                         <div ng-include=" 'partials/list_delete.html'"></div>
