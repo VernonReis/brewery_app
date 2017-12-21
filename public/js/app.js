@@ -116,10 +116,9 @@ app.controller('MainController', ['$http', function ($http) {
     this.checkUserReview = () => {
         $http({
             method: 'GET',
-            url: '/review/count' + this.breweryid + this.myUser._id
+            url: '/review/count/' + this.breweryid + '/' + this.myUser._id
         }).then(response => {
-            console.log("checkUserReview Output");
-            console.log(response.data);
+            this.hasReview = response.data;
         }).catch(err => console.log(err));
     }
 
@@ -144,6 +143,7 @@ app.controller('MainController', ['$http', function ($http) {
             this.breweryReviews = response.data;
             console.log(this.showbrewery);
             this.formdata = {};
+            this.checkUserReview();
         }).catch(err => console.log(err));
     }
 
@@ -210,6 +210,7 @@ app.controller('MainController', ['$http', function ($http) {
                     this.breweryReviews = response.data;
                     this.showedits = 1;
                     console.log(this.showbrewery);
+                    this.checkUserReview();
                 }).catch(err => console.log(err));
 
             }, err => {
@@ -233,6 +234,7 @@ app.controller('MainController', ['$http', function ($http) {
                 }).then(response => {
                     this.breweryReviews = response.data;
                     console.log(this.showbrewery);
+                    this.checkUserReview();
                 }).catch(err => console.log(err));
 
             }, err => {
@@ -271,6 +273,7 @@ app.controller('MainController', ['$http', function ($http) {
                 console.log(this);
                 this.newUserForm = {};
                 this.loginForm = {};
+                this.checkUserReview();
             }, err => {
                 console.log(err.data.err);
                 this.error = err.statusText;
