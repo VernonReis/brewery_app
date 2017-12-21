@@ -13,10 +13,8 @@
         <title>Brewery</title>
     </head>
     <body ng-controller="MainController as ctrl">
-        {{ctrl.test}}
         <div class="beer">
             <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
-            <p>Hi, {{ctrl.definitelysomething}} !</p>
 
             <h1>Who Brew?</h1>
         </div>
@@ -32,9 +30,9 @@
                 <!--<img src="http://via.placeholder.com/150x450">-->
                 <div ng-if='ctrl.loginStatus == "login"' ng-include="'partials/login.html'"></div>
                 <div ng-if='ctrl.loginStatus == "register"' ng-include="'partials/register.html'"></div>
-                <div ng-if='ctrl.loginStatus == "logged"'>
+                <div ng-if='ctrl.loginStatus == "logged" && ctrl.showpage'>
                     <h3>Welcome {{ctrl.myUser.username}}</h3>
-                    <button ng-click="ctrl.logoutUser()">Logout</button>
+                    <button ng-click="ctrl.logoutUser()" class="btn btn-primary">Logout</button>
                 </div>
             </div>
 
@@ -59,7 +57,6 @@
 
 
         <div ng-if='ctrl.showpage == false' ng-include="'partials/reviews.html'"></div>
-        <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
         <div ng-if='ctrl.showpage == false'>
             <br />
             <h2>

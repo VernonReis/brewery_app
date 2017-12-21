@@ -1,8 +1,8 @@
 ﻿<h3>Login</h3>
 <form class="form-group col-md-2" ng-submit='ctrl.loginUser()'>
-    <input type="text" placeholder="username" ng-model="ctrl.loginForm.username" />
-    <input type="password" placeholder="password" ng-model="ctrl.loginForm.password" />
-    <input type="submit" />
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="username" ng-model="ctrl.loginForm.username" />
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" ng-model="ctrl.loginForm.password" />
+    <input type="submit" class="btn btn-primary" />
 </form>
 <br />
-<button ng-click="ctrl.loginStatus = 'register'">Register</button>
+<button ng-click="ctrl.loginStatus = 'register'" class="btn btn-primary">Register</button>

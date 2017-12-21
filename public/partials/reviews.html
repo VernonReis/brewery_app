@@ -10,6 +10,9 @@
     <h2 ng-if='ctrl.loginStatus != "logged"'>Login To Submit A Review</h2>
 
     <h2>Reviews</h2>
+    <div ng-if='ctrl.breweryReviews.length == 0'>
+        No reviews currently added
+    </div>
     <div ng-repeat='review in ctrl.breweryReviews'>
         Rating: {{ review.rating }}
         <br>
