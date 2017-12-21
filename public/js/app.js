@@ -266,7 +266,7 @@ app.controller('MainController', ['$http', function ($http) {
                 $http({ url: '/user', method: 'post', data: this.newUserForm })
                     .then(response => {
                         console.log('Register successful!');
-                        this.myUser = response.data.user;
+                        this.myUser = response.data;
                         this.loginStatus = 'logged';
                         this.newUserForm = {};
                         this.loginForm = {};
