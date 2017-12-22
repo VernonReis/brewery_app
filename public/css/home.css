@@ -114,6 +114,7 @@ button {
   border-radius: 5px;
   border: 0;
   color: white;
+  font-weight: bold;
 }
 
 input[type=submit] {
@@ -123,6 +124,12 @@ input[type=submit] {
   padding: 5px;
   border: 0;
   color: white;
+  font-weight: bold;
+
+}
+
+input {
+  margin: 3px;
 }
 
 td {
