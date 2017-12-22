@@ -50,28 +50,29 @@
             </div>
 
             <div class="column2">
-
-                <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
+                    <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
+                    <div ng-if='ctrl.showpage == false'>
+                            <br />
+                            <h2>
+                                Brewery Name:
+                                <br /> {{ ctrl.showbrewery.name }}
+                            </h2>
+                            <br>
+                            <h2>
+                                Brewery Location:
+                                <br /> {{ ctrl.showbrewery.location }}
+                            </h2>
+                            <br />
+        
+                        </div>
+                
 
                 <h2 ng-if='ctrl.currentuser != 0 && ctrl.showpage == false'>Edit Brewery</h2>
                 <div ng-if='ctrl.currentuser != 0 && ctrl.showpage == false' ng-include=" 'partials/edit_brewery.html'"></div>
 
                 <div ng-if='ctrl.showpage == false' ng-include="'partials/reviews.html'"></div>
                 <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()'>Back to main page</div>
-                <div ng-if='ctrl.showpage == false'>
-                    <br />
-                    <h2>
-                        Brewery Name:
-                        <br /> {{ ctrl.showbrewery.name }}
-                    </h2>
-                    <br>
-                    <h2>
-                        Brewery Location:
-                        <br /> {{ ctrl.showbrewery.location }}
-                    </h2>
-                    <br />
-
-                </div>
+               
             </div>
         </div>
         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
