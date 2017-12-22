@@ -21,7 +21,7 @@
         <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()' id="back">
             <span class="glyphicon glyphicon-chevron-left"></span>Back to main page
         </div>
-        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    
         <p class="anyone" ng-if='ctrl.showpage'>Brewery Anyone?</p>
         <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
 
@@ -52,7 +52,6 @@
                 </div>
             </div>
         </div>
-        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <div class="container">
             <div>
                 <div ng-if='ctrl.showpage == false'>
