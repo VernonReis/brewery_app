@@ -17,14 +17,10 @@
         <div class="beer">
             <img src="https://i.imgur.com/xfOdAmo.png">
         </div>
-
-        <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()' id="back">
-            <span class="glyphicon glyphicon-chevron-left"></span>Back to main page
-        </div>
-    
-        <p class="anyone" ng-if='ctrl.showpage'>Brewery Anyone?</p>
+        <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()' id="back"><span class="glyphicon glyphicon-chevron-left"></span>Back to main page</div>
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <p class="anyone">Brewery Anyone?</p>
         <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
-
         <div class="container">
             <div class="column1">
                 <!--<img src="http://via.placeholder.com/150x450">-->
@@ -52,6 +48,7 @@
                 </div>
             </div>
         </div>
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <div class="container">
             <div>
                 <div ng-if='ctrl.showpage == false'>
@@ -70,7 +67,7 @@
                         {{ ctrl.showbrewery.location }}
                     </h4>
 
-                    <<<<<<< HEAD
+
                 </div>
                 <br>
                 <br>
@@ -83,7 +80,6 @@
             </div>
 
         </div>
-       
 
 
     </body>
