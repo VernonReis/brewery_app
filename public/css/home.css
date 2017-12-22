@@ -1,6 +1,6 @@
 @font-face {
   font-family: "beer";
-  src: url(GuinnessExtraStoutNF.ttf);
+  src: url(BEER.TTF);
 }
 .container {
   display: flex;
@@ -15,10 +15,17 @@
   flex-direction: column;
 
 }
-
+.anyone {
+  font-size: 20px;
+  float: left;
+  padding-right: 10px;
+}
 .column1{
   padding-right: 100px;
+
+  display: block;
 }
+
 .row1{
   padding-bottom: 10px;
 }
@@ -29,14 +36,14 @@
   padding-top: 10px;
 }
 body {
-   background-color:#A27C5D!important;
+   background-color:#FBF6F8!important;
   background-repeat: no-repeat;
   text-align: center !important;
-  color: silver;
+  color: #1D1916;
 
 }
 p {
-  color: white !important;
+  color: #1D1916 !important;
   font-size: 30px;
 }
 td {
@@ -49,9 +56,33 @@ td {
 
 h1 {
   color: white;
-  padding: 10%;
+  padding: 30%;
+  font-family: "beer";
+  font-size: 50px;
+  margin: 0;
+}
+#back {
+  display: flex;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  justify-content: center;
+  font-family: "beer";
+  font-size: 15px;
+  width: 25%;
+  align-items: center;
+}
+span {
+  padding: 5px;
+}
+h2 {
   font-family: "beer";
 }
+h3 {
+  font-family: "beer";
+}
+/*.return{
+  float: left;
+}*/
 /*h1:hover {
 
   transform: scale(3);
@@ -64,11 +95,47 @@ input#search {
   float: left;
 }
 div.beer{
-  background-image: url('https://i.imgur.com/wAvWfzS.png')!important;
+  background-image: url('http://www.appliedart.com/assets/uploads/blog/craft-beer.jpg')!important;
   background-repeat: no-repeat;
   background-position: center;
+
 }
 
+h4 {
+  font-size: 30px;
+}
 form {
     width: inherit !important;
+}
+
+button {
+  background-color: #7B331F;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  font-weight: bold;
+}
+
+input[type=submit] {
+  margin-top: 5px;
+  background-color: #7B331F;
+  border-radius: 5px;
+  padding: 5px;
+  border: 0;
+  color: white;
+  font-weight: bold;
+
+}
+
+input {
+  margin: 3px;
+}
+
+td {
+  background-color: #C7441F;
+  border-radius: 5px;
+  padding: 5px;
+  border: 0;
+  color: white;
 }
