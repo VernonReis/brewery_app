@@ -65,13 +65,16 @@ app.controller('MainController', ['$http', function ($http) {
     }
     this.editOneBrewery = (id) => {
         console.log(id)
+        let temp = this.editOneForm;
         $http({
             method: 'PUT',
             url: '/brewery/' + id,
             data: this.editOneForm
 
         }).then(response => {
-            window.location.reload();
+            this.show(response.data);
+            this.showpage = !this.showpage;
+            this.editOneForm = temp;
         }, err => {
             console.log(err.message);
 
