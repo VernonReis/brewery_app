@@ -1,11 +1,11 @@
-    
+
 
 <form ng-if='ctrl.loginStatus == "logged" && !ctrl.hasReview' ng-submit='ctrl.addReview()'>
     <h2>Add a review</h2>
     <input type='text' placeholder='Rating 1-5' ng-model='ctrl.formdata.rating'>
     <input type="text" placeholder="Comment" ng-model='ctrl.formdata.comment'>
     <input type='hidden' ng-model='ctrl.formdata.userID'>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" >Submit</button>
 </form>
     <h2 ng-if='ctrl.loginStatus != "logged"'>Login To Submit A Review</h2>
 
