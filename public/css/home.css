@@ -59,10 +59,7 @@ h1 {
 div.ng-scope{
   background-color: #80808000;
 }
-input#search {
-  width:25%!important;
-  float: left;
-}
+
 div.beer{
   background-image: url('https://i.imgur.com/wAvWfzS.png')!important;
   background-repeat: no-repeat;
