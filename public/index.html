@@ -20,7 +20,7 @@
         <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()' id="back"><span class="glyphicon glyphicon-chevron-left"></span>Back to main page</div>
         
         <div>
-            <p class="anyone">Brewery Anyone?</p>
+            <p ng-if="ctrl.showpage" class="anyone">Brewery Anyone?</p>
             <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
         </div>
         <div class="container">
