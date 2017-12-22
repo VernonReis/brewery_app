@@ -104,6 +104,8 @@ app.controller('MainController', ['$http', function ($http) {
         this.findBrewery(this.breweryid);
         this.formdata.breweryID = this.breweryid;
         this.user();
+        this.loginFail = false;
+        this.registerFail = false;
         $http({
             method: 'GET',
             url: '/review/' + this.breweryid
