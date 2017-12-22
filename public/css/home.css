@@ -22,7 +22,10 @@
 }
 .column1{
   padding-right: 100px;
+
+  display: block;
 }
+
 .row1{
   padding-bottom: 10px;
 }
@@ -103,4 +106,29 @@ h4 {
 }
 form {
     width: inherit !important;
+}
+
+button {
+  background-color: #7B331F;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+}
+
+input[type=submit] {
+  margin-top: 5px;
+  background-color: #7B331F;
+  border-radius: 5px;
+  padding: 5px;
+  border: 0;
+  color: white;
+}
+
+td {
+  background-color: #C7441F;
+  border-radius: 5px;
+  padding: 5px;
+  border: 0;
+  color: white;
 }
