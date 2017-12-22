@@ -17,9 +17,12 @@
 }
 .anyone {
   font-size: 20px;
-  float: left;
+  font-family: beer;
   padding-right: 10px;
 }
+
+
+
 .column1{
   padding-right: 100px;
 
@@ -96,14 +99,10 @@ div.beer{
   background-repeat: no-repeat;
   background-position: center;
 
-<<<<<<< HEAD
 }
 
 h4 {
   font-size: 30px;
-}
-
-=======
 }
 
 h4 {
@@ -113,7 +112,7 @@ form {
     width: inherit !important;
 }
 
->>>>>>> ba7b03b136f980a3faf6f6bfc720cf1e425cb5b6
+
 button {
   background-color: #7B331F;
   padding: 5px;
@@ -134,9 +133,6 @@ input[type=submit] {
 
 }
 
-input {
-  margin: 3px;
-}
 
 td {
   background-color: #C7441F;
