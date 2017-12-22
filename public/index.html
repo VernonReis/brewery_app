@@ -4,7 +4,12 @@
         <meta charset="utf-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
         <script type="text/javascript" src="/js/app.js"></script>
+<<<<<<< HEAD
         
+=======
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous">
+>>>>>>> ba7b03b136f980a3faf6f6bfc720cf1e425cb5b6
 
         <link rel="stylesheet" type="text/css" href="/css/showpage.css">
 
@@ -17,10 +22,18 @@
         <div class="beer">
             <img src="https://i.imgur.com/xfOdAmo.png">
         </div>
+<<<<<<< HEAD
         <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()' id="back"><span class="glyphicon glyphicon-chevron-left"></span>Back to main page</div>
         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <p class="anyone">Brewery Anyone?</p>
           <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
+=======
+        <div ng-if='ctrl.showpage == false' ng-click='ctrl.show()' id="back">
+            <span class="glyphicon glyphicon-chevron-left"></span>Back to main page</div>
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <p class="anyone" ng-if='ctrl.showpage'>Brewery Anyone?</p>
+        <input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
+>>>>>>> ba7b03b136f980a3faf6f6bfc720cf1e425cb5b6
         <div class="container">
             <div class="column1">
                 <!--<img src="http://via.placeholder.com/150x450">-->
@@ -67,6 +80,7 @@
                 {{ ctrl.showbrewery.location }}
             </h4>
 
+<<<<<<< HEAD
         </div>
 <br>
 <br>
@@ -79,6 +93,31 @@
       </div>
 
       </div>
+=======
+            <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+            <div class="column2">
+                <div>
+                    <div ng-if='ctrl.showpage == false'>
+                        <br />
+                        <h2>
+                            Brewery Name:
+                        </h2>
+                        <h4>
+                            {{ ctrl.showbrewery.name }}
+                        </h4>
+                        <br>
+                        <h2>
+                            Brewery Location:
+                        </h2>
+                        <h4>
+                            {{ ctrl.showbrewery.location }}
+                        </h4>
+
+                    </div>
+                    <br>
+                    <br>
+
+>>>>>>> ba7b03b136f980a3faf6f6bfc720cf1e425cb5b6
 
     </body>
 </html>

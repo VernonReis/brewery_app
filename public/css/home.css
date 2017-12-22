@@ -96,12 +96,24 @@ div.beer{
   background-repeat: no-repeat;
   background-position: center;
 
+<<<<<<< HEAD
 }
 
 h4 {
   font-size: 30px;
 }
 
+=======
+}
+
+h4 {
+  font-size: 30px;
+}
+form {
+    width: inherit !important;
+}
+
+>>>>>>> ba7b03b136f980a3faf6f6bfc720cf1e425cb5b6
 button {
   background-color: #7B331F;
   padding: 5px;
