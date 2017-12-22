@@ -22,7 +22,10 @@
   padding-right: 10px;
 }
 
-
+#red {
+    color: red !important;
+    font-size: 17px;
+}
 
 .column1{
   padding-right: 100px;

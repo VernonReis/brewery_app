@@ -19,6 +19,7 @@ app.controller('MainController', ['$http', function ($http) {
     this.loginStatus = "login";
     this.myUser = {};
     this.hasReview = false;
+    this.loginFail = false;
 
     this.createBrewery = () => {
         console.log('Submit button works');
@@ -278,7 +279,10 @@ app.controller('MainController', ['$http', function ($http) {
                 this.loginForm = {};
                 this.checkUserReview();
                 this.user();
+                this.loginFail = false;
             }, err => {
+                this.loginFail = true;
+                this.loginForm = {};
                 console.log(err.data.err);
                 this.error = err.statusText;
             })
@@ -293,7 +297,10 @@ app.controller('MainController', ['$http', function ($http) {
                 this.loginStatus = 'logged';
                 this.newUserForm = {};
                 this.loginForm = {};
+                this.registerFail = false;
             }, err => {
+                this.registerFail = true;
+                this.newUserForm = {};
                 console.log(err.data.err);
                 this.error = err.statusText;
             })

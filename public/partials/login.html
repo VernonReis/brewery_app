@@ -1,4 +1,5 @@
 ﻿<h3>Login</h3>
+<p id="red" ng-if="ctrl.loginFail">Incorrect Username or Password</p>
 <form class="form-group col-md-2" ng-submit='ctrl.loginUser()'>
     <input type="text" placeholder="username" ng-model="ctrl.loginForm.username" />
     <br/>
@@ -7,4 +8,4 @@
     <input type="submit" />
 </form>
 
-<button ng-click="ctrl.loginStatus = 'register'">Register</button>
+<button ng-click="ctrl.loginStatus = 'register'; ctrl.loginFail = false">Register</button>

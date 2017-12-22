@@ -1,12 +1,14 @@
 ﻿<div>
+
     <h3>Register</h3>
+    <p id="red" ng-if="ctrl.registerFail">Desired Username Taken</p>
     <form class="form-group col-md-2" ng-submit='ctrl.registerUser()'>
         <input type="text" placeholder="username" ng-model="ctrl.newUserForm.username" />
-        <br/>
+        <br />
         <input type="password" placeholder="password" ng-model="ctrl.newUserForm.password" />
-        <br/>
+        <br />
         <input type="submit" />
     </form>
 
-    <button ng-click="ctrl.loginStatus = 'login'">Return to Login</button>
+    <button ng-click="ctrl.loginStatus = 'login'; ctrl.registerFail = false;">Return to Login</button>
 </div>
