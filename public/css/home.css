@@ -101,9 +101,6 @@ div.beer{
 h4 {
   font-size: 30px;
 }
-form {
-    width: inherit !important;
-}
 
 button {
   background-color: #7B331F;
