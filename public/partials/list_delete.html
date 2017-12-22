@@ -1,3 +1,7 @@
+
+<div>
+<input id="search" ng-if='ctrl.showpage' type="text" placeholder="Search for a Brewery..." ng-model='ctrl.searchBox'>
+</div>
 <table>
     <tr ng-repeat="brewery in ctrl.brewery
     | orderBy:'title' | filter:ctrl.searchBox">

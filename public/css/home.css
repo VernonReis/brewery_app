@@ -90,10 +90,7 @@ h3 {
 div.ng-scope{
   background-color: #80808000;
 }
-input#search {
-  width:25%!important;
-  float: left;
-}
+
 div.beer{
   background-image: url('http://www.appliedart.com/assets/uploads/blog/craft-beer.jpg')!important;
   background-repeat: no-repeat;
